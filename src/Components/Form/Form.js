@@ -1,26 +1,31 @@
-import React ,{useState}from 'react'
-import './form.css'
+import React ,{useState}from 'react' ;
+import {connect} from 'react-redux' ;
+import {addData} from '../../Redux/Action/Actions'
+import './form.css' ;
 
 
 
 
 
-const Form = () => {
+const Form = (props) => {
 
 
         const [fname, setFname] = useState('')
         const [fnameHasErr, setFnameHasErr] = useState(true)
+        const [errfname,setErrFname] = useState('')
+
 
         const [lname, setLname] = useState('')
         const [lnameHasErr, setLnameHasErr] = useState(true)
+        const [errlname,setErrLname] = useState('')
 
         const [age, setAge] = useState(18)
         const [skill, setSkill] = useState('none')
 
 
 
-        const [errfname,setErrFname] = useState('')
-        const [errlname,setErrLname] = useState('')
+
+
 
 
           function FnameValidate(e){
@@ -69,7 +74,12 @@ const Form = () => {
 
         if (fnameHasErr === false && lnameHasErr === false) {
             alert(`${fname} ${lname} ${age} ${skill}`)
-
+                props.addData({
+                    fname:fname,
+                    lname:lname,
+                    age:age,
+                    skill:skill
+                })
         }
         else {
             alert('لطفا اطلاعات را به درستی وارد کنید')
@@ -158,4 +168,10 @@ const Form = () => {
 )
 }
 
-export default Form
+ const mapDispatchToProps =dispatch=> {
+     return {
+         addData: (data) => dispatch(addData(data))
+     }
+ }
+
+export default connect(null,mapDispatchToProps)(Form)
