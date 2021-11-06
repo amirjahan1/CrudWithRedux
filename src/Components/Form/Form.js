@@ -21,8 +21,7 @@ const Form = (props) => {
 
         const [age, setAge] = useState(18)
         const [skill, setSkill] = useState('none')
-
-
+        const [id, setId] = useState(Math.floor(Math.random() * 100))
 
 
 
@@ -70,11 +69,14 @@ const Form = (props) => {
 
 
 
-    function SendData() {
+   async function SendData() {
+
+
 
         if (fnameHasErr === false && lnameHasErr === false) {
             alert(`${fname} ${lname} ${age} ${skill}`)
                 props.addData({
+                    id: id,
                     fname:fname,
                     lname:lname,
                     age:age,
@@ -129,7 +131,7 @@ const Form = (props) => {
                     <label style={{direction: 'rtl'}} className="text-gray-700 font-bold py-2" htmlFor="">سن :</label>
 
                 </div>
-                <input Min={18} Max={100} name="age" id="age"
+                <input min={18} max={100} name="age" id="age"
                        onChange={(e)=>setAge(e.target.value)}
                        defaultValue={age}
                     className="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline"
@@ -150,12 +152,14 @@ const Form = (props) => {
                     <option value="Html">Html</option>
                     <option value="Css">Css</option>
                     <option value="Js">Js</option>
-                    <option value="none" selected>none</option>
+                    <option value="none" defaultValue>none</option>
                 </select>
-
                 {/*         INPUT SKILL FINISH            */}
 
 
+                {/*        INPUT TYPE HIDDEN FOR ID START       */}
+                    <input type="hidden" name="id" id="id" defaultValue={id} />
+                {/*        INPUT TYPE HIDDEN FOR ID FINISH      */}
                         <div className="flex justify-between items-center my-4">
                             <button onClick={SendData} className="bg-blue-500  w-full hover:bg-blue-700 text-white font-bold rounded py-2 px-4">
                                 ارسال

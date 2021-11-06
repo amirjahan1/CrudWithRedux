@@ -1,6 +1,7 @@
 import Form from "./Components/Form/Form";
 import Navbar from "./Components/Navbar/Navbar"
 import User from './Components/User/User'
+import FormEdit from "./Components/Form/FormEdit";
 import {
     Switch,
     Route,
@@ -16,6 +17,7 @@ function App() {
 
         <Switch>
             <Route  path="/user" component={User}/>
+            <Route  path="/edit/:idd/:fnamee/:lnamee/:agee/:skilll" component={FormEdit}/>
             <Route exact path="/" component={Form}/>
         </Switch>
 
