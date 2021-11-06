@@ -5,16 +5,7 @@ import {ADD_DATA , REMOVE_DATA , UPDATE_DATA} from "../Action/ActionTypes";
 
 
 const initialState = {
-   formDetail : [
-       {
-           id : 0,
-           fname : "",
-           lname : "",
-           age : "",
-           skill : "",
-
-       }
-   ]
+   formDetail : [ ]
 }
 
 
@@ -41,25 +32,18 @@ export default function Reducer(state = initialState , action) {
         case REMOVE_DATA :
             return {
                 ...state ,
-                formDetail : state.formDetail.filter(item => item.id !== action.payload.id)
+                formDetail : state.formDetail.filter(item => item.id !== action.payload)
             }
 
         case UPDATE_DATA :
-            return {
+            return  {
                 ...state ,
-                formDetail : state.formDetail.map(item => {
-                    if(item.id === action.payload.id) {
-                        return {
-                            ...item ,
-                            fname : action.payload.fname ,
-                            lname : action.payload.lname ,
-                            age : action.payload.age ,
-                            skill : action.payload.skill ,
-                        }
-                    }
-                    return item
-                })
+                formDetail: state.formDetail.map( item =>
+                    item.id == action.payload.id ? item = action.payload : item = item
+                )
             }
+
+
         default :
             return state;
     }

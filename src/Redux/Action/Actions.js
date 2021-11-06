@@ -11,10 +11,10 @@ export const addData = (data) => {
 }
 
 
-export const removeData = (data) => {
+export const removeData = (id) => {
     return {
         type: REMOVE_DATA,
-        payload: data
+        payload: id
     }
 }
 

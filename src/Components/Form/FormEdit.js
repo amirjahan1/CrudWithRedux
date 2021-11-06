@@ -22,7 +22,7 @@ const FormEdit = (props) => {
 
     const [age, setAge] = useState(18)
     const [skill, setSkill] = useState('none')
-    const [id, setId] = useState(Math.floor(Math.random() * 100))
+
 
 
     let {idd ,fnamee,lnamee,agee,skilll} = useParams()
@@ -76,7 +76,7 @@ const FormEdit = (props) => {
         if (fnameHasErr === false && lnameHasErr === false) {
             alert(`${fname} ${lname} ${age} ${skill}`)
             props.addData({
-                id: id,
+                id: idd,
                 fname:fname,
                 lname:lname,
                 age:age,
@@ -164,7 +164,7 @@ const FormEdit = (props) => {
 
 
                 {/*        INPUT TYPE HIDDEN FOR ID START       */}
-                <input type="hidden" name="id" id="id" defaultValue={idd} />
+                <input type="hidden" name="id" id="id" defaultValue={idd} value={idd} />
                 {/*        INPUT TYPE HIDDEN FOR ID FINISH      */}
                 <div className="flex justify-between items-center my-4">
                     <button onClick={SendData} className="bg-blue-500  w-full hover:bg-blue-700 text-white font-bold rounded py-2 px-4">

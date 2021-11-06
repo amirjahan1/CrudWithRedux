@@ -6,15 +6,9 @@ import {Link} from "react-router-dom";
 const User = (props) => {
 
 
-    const [users, setUsers] = useState([]);
-    useEffect(() => {
-        return () => {
-           setUsers(props.user)
-        };
-    }, [props.user]);
 
 
-console.log("props")
+
 
     return(
         <div className="flex flex-col w-8/12 mx-auto mt-32">
@@ -70,8 +64,8 @@ console.log("props")
 
 
                             {
-                                props.user.length > 1 ?
-                                    props.user.filter((val,idx)=>idx > 0).map( item => (
+
+                                    props.user.map( item => (
 
                                             <tr key={item.id}>
                                                 <td className="px-6 py-4 whitespace-nowrap">
@@ -113,15 +107,14 @@ console.log("props")
 
                                                 <td className="  px-6 py-4 whitespace-nowrap text-sm text-center font-medium " >
      <span  className="text-red-600 hover:text-red-900 cursor-pointer "
-            onClick={()=>props.removeData(item.id)}>
+            onClick={()=>props.removeItem(item.id)}>
                                                     Delete</span>
 
                                                 </td>
                                             </tr>
                                     ))
 
-                                    :
-                                    null
+                                   
                             }
 
 
@@ -143,7 +136,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        removeData: (id) => dispatch(removeData(id))
+        removeItem: (id) => dispatch(removeData(id))
     }
 }
 export default connect(mapStateToProps,mapDispatchToProps)(User)
