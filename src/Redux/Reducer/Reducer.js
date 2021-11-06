@@ -5,7 +5,7 @@ import {ADD_DATA , REMOVE_DATA , UPDATE_DATA} from "../Action/ActionTypes";
 
 
 const initialState = {
-   formDetail : [ ]
+   formDetail : []
 }
 
 
@@ -23,7 +23,9 @@ export default function Reducer(state = initialState , action) {
                         fname : action.payload.fname ,
                         lname : action.payload.lname ,
                         age : action.payload.age ,
-                        skill : action.payload.skill ,
+                        html : action.payload.html ,
+                        css : action.payload.css ,
+                        js : action.payload.js ,
                     }
                 ]
             }

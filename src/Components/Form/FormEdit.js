@@ -21,11 +21,14 @@ const FormEdit = (props) => {
     const [errlname,setErrLname] = useState('')
 
     const [age, setAge] = useState(18)
-    const [skill, setSkill] = useState('none')
 
 
+    const [html, setHtml] = useState('')
+    const [css, setCss] = useState('')
+    const [js, setJs] = useState('')
 
-    let {idd ,fnamee,lnamee,agee,skilll} = useParams()
+
+    let {idd ,fnamee,lnamee,agee,htmll,csss,jss} = useParams()
 
 
 
@@ -69,18 +72,18 @@ const FormEdit = (props) => {
 
 
 
-    async function SendData() {
-
-
+    function SendData() {
 
         if (fnameHasErr === false && lnameHasErr === false) {
-            alert(`${fname} ${lname} ${age} ${skill}`)
+            alert(`${fname} ${lname} ${age} `)
             props.addData({
                 id: idd,
                 fname:fname,
                 lname:lname,
                 age:age,
-                skill:skill
+                html:html,
+                css:css,
+                js:js
             })
         }
         else {
@@ -89,9 +92,34 @@ const FormEdit = (props) => {
             LnameValidate({target:{value:lname}})
             FnameValidate({target:{value:fname}})
         }
+    }
 
 
+    function checkHtml(e){
+        if (e.target.checked === true){
+            setHtml('html')
+        }
+        else{
+            setHtml(null)
+        }
+    }
 
+    function checkCss(e){
+        if (e.target.checked === true){
+            setCss('css')
+        }
+        else{
+            setCss(null)
+        }
+    }
+
+    function checkJs(e){
+        if (e.target.checked === true){
+            setJs('js')
+        }
+        else{
+            setJs(null)
+        }
     }
 
 
@@ -146,21 +174,45 @@ const FormEdit = (props) => {
 
 
 
-                {/*     INPUT SKILL START      */}
+                {/*    CHECKBOX START  */}
                 <div className="mt-3"   style={{direction: 'rtl'}}>
-                    <label style={{direction: 'rtl'}} className="text-gray-700 font-bold py-2" htmlFor="">مهارت :</label>
+                    <div className="block ">
+                        <span className="text-gray-700 w-full text-center block">مهارت</span>
+                        <div className="mt-2 flex w-full justify-evenly">
+
+                            <div>
+                                <label className="inline-flex items-center">
+                                    <input type="checkbox" value="Html" onChange={(e)=>checkHtml(e)} className="form-checkbox" />
+                                    <span className="ml-2">HTML</span>
+                                </label>
+                            </div>
+
+                            <div>
+                                <label className="inline-flex items-center">
+                                    <input type="checkbox" value="Css"  onChange={(e)=>checkCss(e)} className="form-checkbox"/>
+                                    <span className="ml-2">CSS</span>
+                                </label>
+                            </div>
+
+                            <div>
+                                <label className="inline-flex items-center">
+                                    <input type="checkbox" value="Js"  onChange={(e)=>checkJs(e)} className="form-checkbox"/>
+                                    <span className="ml-2">JS</span>
+                                </label>
+                            </div>
+                            {/*    CHECKBOX FINISH  */}
+
+
+                        </div>
+                    </div>
                 </div>
-                <select  style={{direction: 'rtl'}} name="skill" id="skill"
-                         onChange={(e)=>setSkill(e.target.value)}
-                         defaultValue={skilll}
-                         className="text-gray-700 shadow border rounded border-gray-300 mb-3 py-1 px-3 focus:outline-none focus:shadow-outline"
-                >
-                    <option value="Html">Html</option>
-                    <option value="Css">Css</option>
-                    <option value="Js">Js</option>
-                    <option value="none" defaultValue>none</option>
-                </select>
-                {/*         INPUT SKILL FINISH            */}
+
+
+                <div className="mt-3 border border-indigo-600 py-5 flex justify-evenly"   style={{direction: 'rtl'}}>
+                    { html ?  <span> #HTML </span>  : null }
+                    { css ?  <span>#CSS</span>   : null }
+                    { js  ?  <span>#JS</span>  : null }
+                </div>
 
 
                 {/*        INPUT TYPE HIDDEN FOR ID START       */}

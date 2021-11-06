@@ -64,7 +64,6 @@ const User = (props) => {
 
 
                             {
-
                                     props.user.map( item => (
 
                                             <tr key={item.id}>
@@ -98,10 +97,12 @@ const User = (props) => {
                                                     </div>
                                                 </td>
                                                 <td className="px-6 py-4 whitespace-nowrap text-sm text-center text-gray-500">
-                                                    {item.skill}
+                                                   <span> {item.html ? item.html : null} </span>
+                                                   <span> {item.css ? item.css : null} </span>
+                                                   <span> {item.js ? item.js : null} </span>
                                                 </td>
                   <td className=" px-6 py-4 whitespace-nowrap  text-center text-sm font-medium " >
-                <Link to={`/edit/${item.id}/${item.fname}/${item.lname}/${item.age}/${item.skill}`}  className="text-indigo-600 hover:text-indigo-900" >Edit</Link>
+ <Link to={`/edit/${item.id}/${item.fname}/${item.lname}/${item.age}/${item.html ? item.html : null}/${item.css ? item.css : null}/${item.js ? item.js : null}`}  className="text-indigo-600 hover:text-indigo-900" >Edit</Link>
 
                 </td>
 
@@ -114,7 +115,7 @@ const User = (props) => {
                                             </tr>
                                     ))
 
-                                   
+
                             }
 
 

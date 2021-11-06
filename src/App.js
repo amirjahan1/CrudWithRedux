@@ -2,6 +2,7 @@ import Form from "./Components/Form/Form";
 import Navbar from "./Components/Navbar/Navbar"
 import User from './Components/User/User'
 import FormEdit from "./Components/Form/FormEdit";
+import Chart from "./Components/Chart/Chart";
 import {
     Switch,
     Route,
@@ -17,8 +18,9 @@ function App() {
 
         <Switch>
             <Route  path="/user" component={User}/>
-            <Route  path="/edit/:idd/:fnamee/:lnamee/:agee/:skilll" component={FormEdit}/>
+            <Route  path="/edit/:idd/:fnamee/:lnamee/:agee/:htmll/:csss/:jss" component={FormEdit}/>
             <Route exact path="/" component={Form}/>
+            <Route exact path="/chart" component={Chart}/>
         </Switch>
 
     </div>
